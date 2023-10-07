@@ -72,7 +72,13 @@
   }
   section.lead p {
     text-align: justify;
+    font-size: 22px;
   }
+  section.lead li {
+    text-align: justify;
+    font-size: 22px;
+  }
+
   section.lead h1 {
     text-align: center;
   }
