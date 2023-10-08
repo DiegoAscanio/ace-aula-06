@@ -109,6 +109,7 @@
     margin-right: 5%;
   }
   img[alt=grid-img] {
+    display: block;
     width: 100%;
   }
 
@@ -184,12 +185,205 @@ Referem-se às condições dos passivos de energia enquanto acumulam ou fornecem
 
 <div style="margin: 3% 3% 3% 3%;">
 
-Estamos interessados em modelar o comportamento transitório dos passivos de energia em circuitos de primeira ordem \\(RL \text{ | } RC\\). por serem circuitos de 1ª ordem, é possível modelar estes circuitos através de equações diferenciais de ordem 1. porém, antes de modelar os circuitos, temos de entender que a transitoriedade so existe em resposta a um estímulo que causa uma perturbação a um sistema que até um instante de tempo \\( T = 0 \\) se encontrava em um estado permanente.
+Estamos interessados em modelar o comportamento transitório dos passivos de energia em circuitos de primeira ordem \\(RL \text{ | } RC\\). Por serem circuitos de 1ª ordem, é possível modelar estes circuitos através de equações diferenciais de ordem 1. porém, antes de modelar os circuitos, temos de entender que a transitoriedade so existe em resposta a um estímulo que causa uma perturbação a um sistema que até um instante de tempo \\( T = 0 \\) se encontrava em um estado permanente.
 
 A priori, estudaremos dois destes estímulos:
 
 1. Natural
 2. Degrau
+
+</div>
+
+</div>
+
+
+---
+
+## Estímulo Natural (Representa a Descarga)
+
+<div class="normal">
+
+- Representa perturbações que levam um passivo de energia a fornecer (descarregar) energia para um passivo de resistência.
+- Queremos saber como o passivo de energia descarrega, modelando sua resposta natural.
+- O estímulo natural é causado pela retirada repentina de uma fonte constante de tensão (corrente) conectada ao passivo de energia e pela ligação (imediata) deste passivo à uma carga resistiva.
+
+<div class="grid-66-33">
+
+<div class="grid-element">
+
+- Exemplo de perturbação que leva um capacitor a descarregar: Um circuito onde a chave seletora estava a longo tempo na posição \\(a\\) e então, comuta para a posição \\(b\\) quando \\(t = 0\\).
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![](./img/rc-natural.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Estímulo Degrau (Representa a Carga)
+
+<div class="regular">
+
+- Representa perturbações causadas por uma fonte constante e contínua de tensão (corrente) que levam um passivo de energia a acumular (carregar) energia em si.
+- Se queremos saber como um passivo de energia carrega, modelamos sua resposta ao degrau.
+- O estímulo ao degrau representa a aplicação repentina de uma fonte de tensão (corrente) constante a um acumulador de energia (novamente, capacitor ou indutor).
+
+<div class="grid-66-33">
+
+<div class="grid-element">
+
+- Exemplo de perturbação que leva um capacitor a carregar: Um circuito onde a chave estava a longo tempo desligada e no instante \\(t = 0\\) é ligada, fazendo com que uma fonte de corrente constante seja conectada ao capacitor.
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![](./img/rc-degrau.png)
+
+</div>
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta Natural do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element normal">
+
+- Uma vez que em \\(t = 0\\) a chave comuta de \\(a\\) para \\(b\\), logo, o capacitor \\(C\\) fica conectado, fornecendo energia, à resistência \\(R\\) como visto na segunda imagem à direita.
+- Estamos interessados em aprender como o capacitor se comporta em resposta ao estímulo natural, ou seja, queremos saber como o capacitor descarrega.
+- Existe algum modelo matemático que descreva este comportamento?
+    - Sim, existe e este modelo será estudado agora!
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-natural.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta Natural do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element regular">
+
+<strong>Construção do modelo da descarga — RESPOSTA NATURAL — de um Capacitor</strong>
+
+Considere o circuito RC equivalente à configuração do sistema quando \\(t = 0\\) (segunda imagem a direita). Como podemos observar, no nó \\(A\\) deste circuito, existem duas correntes que saem dele: 
+
+1. Corrente de deslocamento \\(I_{C}\\) do capacitor, ocasionada pela variação da diferença de potencial do capacitor causada pela sua descarga;
+2. Corrente elétrica \\(I_{R}\\) que passa pelo resistor, oriunda da diferença de potencial \\(V_{g}\\) presente nos terminais do capacitor \\(C\\).
+
+Em seguida, vemos que não entra nenhuma corrente no nó \\(A\\). Logo, pela Lei de Kirchoff das Correntes no nó \\(A\\), temos que:
+
+<div class="normal">
+
+\\[
+0 = I_{C} + I_{R}
+\\]
+
+</div>
+
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-natural.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta Natural do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element small">
+
+<strong>Construção do modelo da descarga — RESPOSTA NATURAL — de um Capacitor</strong>
+
+Reiterando, sabemos pela Lei de Kirchoff das Correntes no nó \\(A\\), que: \\(0 = I_{C} + I_{R}\\).
+
+Sabemos que \\(I_{R} = {V \over R}\\) e \\(I_{C} = C {{dV} \over {dt}}\\). Logo: 
+
+\\[{C {{dV} \over {dt}}} + {V \over R} = 0 \rightarrow {C {{dV} \over {dt}}} = - {V \over R}\\]
+
+Multiplicando ambos os lados da equação por \\({{dt} \over {VC}}\\), integrando ambos os lados de \\(t_{0}\\) a \\(t\\) (considerando que \\(t_{0} = 0\\)) e cientes que \\(ln(a) - ln(b) = ln({a \over b})\\), temos:
+
+<div class="grid-50-50" style="border-style: solid;">
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+{{dV} \over {V}} &= - {{dt} \over {RC}} \rightarrow \\\\
+\int_{V(0)}^{V(t)} {{dV} \over {V}} &= \int_{0}^{t}{- {{dt} \over {RC}}} \rightarrow \\\\
+ln(V(t)) - ln (V(0)) &= {{-t} \over {RC}} - 0 \rightarrow \\\\
+ln({{V(t)} \over {V(0)}}) &= {{-t} \over {RC}}
+\end{align}
+\\]
+
+</div>
+
+<div class="grid-element">
+
+Colocando ambos os lados da equação como expoentes de \\(e\\):
+
+\\[
+\begin{align}
+{{V(t)} \over {V(0)}} &= e^{{{-t} \over {RC}}} \rightarrow \\\\
+V(t) &= V(0) \cdot e^{{{-t} \over {RC}}}
+\end{align}
+\\]
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-natural.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
 
 </div>
 

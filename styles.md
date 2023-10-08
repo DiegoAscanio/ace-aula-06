@@ -109,6 +109,7 @@
     margin-right: 5%;
   }
   img[alt=grid-img] {
+    display: block;
     width: 100%;
   }
 
