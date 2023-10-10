@@ -30,7 +30,7 @@ Em seguida, vemos que não entra nenhuma corrente no nó \\(A\\). Logo, pela Lei
 ![grid-img](./img/rc-natural.png)
 
 <!-- _class: transparent -->
-![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
 
 </div>
 

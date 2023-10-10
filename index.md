@@ -276,7 +276,7 @@ A priori, estudaremos dois destes estímulos:
 ![grid-img](./img/rc-natural.png)
 
 <!-- _class: transparent -->
-![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
 
 </div>
 
@@ -317,7 +317,7 @@ Em seguida, vemos que não entra nenhuma corrente no nó \\(A\\). Logo, pela Lei
 ![grid-img](./img/rc-natural.png)
 
 <!-- _class: transparent -->
-![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
 
 </div>
 
@@ -383,7 +383,7 @@ V(t) &= V(0) \cdot e^{{{-t} \over {RC}}}
 ![grid-img](./img/rc-natural.png)
 
 <!-- _class: transparent -->
-![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
 
 </div>
 

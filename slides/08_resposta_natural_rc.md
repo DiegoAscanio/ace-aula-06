@@ -17,7 +17,7 @@
 ![grid-img](./img/rc-natural.png)
 
 <!-- _class: transparent -->
-![grid-img](./img/rc-resposta-degrau-circuito-equivalente.svg)
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
 
 </div>
 
