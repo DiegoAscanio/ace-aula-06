@@ -85,6 +85,19 @@
   section.lead h2 {
     text-align: center;
   }
+
+  .grid-25-25-25-25 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: justify;
+  }
+
+  .grid-33-33-33 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: justify;
+  }
+
   
   .grid-50-50 {
     display: grid;

@@ -85,6 +85,19 @@
   section.lead h2 {
     text-align: center;
   }
+
+  .grid-25-25-25-25 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: justify;
+  }
+
+  .grid-33-33-33 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: justify;
+  }
+
   
   .grid-50-50 {
     display: grid;
@@ -691,3 +704,277 @@ Gráfico da Energia Consumida pelo Resistor durante a resposta natural do circui
 ### Exemplo 7.1 Livro Nilsson e Riedel 10ª Edição
 
 <iframe src="https://diegoascanio.github.io/jupyterlite/lab?path=exemplo-7.1.ipynb" width=100% height=100%></iframe> 
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element normal">
+
+- Recapitulando: a resposta ao estímulo degrau (aplicação repentina de uma fonte de tensão / corrente) aos terminais de um passivo de armazenamento de energia representa a carga deste passivo.
+- Uma vez que em \\(t = 0\\) a chave é ligada, logo, o capacitor \\(C\\) é conectado em paralelo ao equivalente de norton retratado, como visto na segunda imagem à direita.
+- Estamos interessados em aprender como o capacitor se comporta em resposta ao estímulo degrau, ou seja, queremos saber como o capacitor carrega.
+- Qual modelo matemático descreve este comportamento?
+    - Será estudado agora!
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-degrau.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element regular">
+
+- Ao analisar o circuito quando \\(t = 0\\) vemos que existem três correntes:
+    1. \\(I_{S}\\), corrente constante oriunda da fonte de corrente;
+    2. \\(I_{R}\\), corrente presente no resistor;
+    3. \\(I_{C}\\), corrente de deslocamento presente no capacitor.
+
+- Pela LKC nos nós temos que:
+\\[
+    I_{S} = I_{R} + I_{C}
+\\]
+
+**Queremos encontrar uma equação que nos permita calcular a tensão armazenada pelo capacitor ao longo do tempo — \\(V_{C}(t)\\) — em função da corrente \\(I_{S}\\) fornecida pela fonte de corrente.**
+
+Porquê? Porquê a tensão é a grandeza de interesse do capacitor, é aquela a qual este elemento apresenta oposição à sua variação.
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-degrau.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element regular">
+
+
+**Queremos encontrar uma equação que nos permita calcular a tensão armazenada pelo capacitor ao longo do tempo — \\(V_{C}(t)\\) — em função da corrente \\(I_{S}\\) fornecida pela fonte de corrente.**
+
+- Pela LKC nos nós temos que:
+\\[
+    I_{S} = I_{R} + I_{C}
+\\]
+
+Sabemos que \\(I_{C} = C {{dV_{C}} \over {dt}}\\) e \\(I_{R} = {{V_{C}} \over R}\\). Logo:
+
+\\[
+C {{dV_{C}} \over {dt}} + {{V_{C}} \over R} = I_{S}
+\\]
+
+Pelo fato do termo a direita da EDO, \\(I_{S}\\), ser não nulo, estamos diante de uma EDO não-homogênea, que portanto, não pode ser resolvida com os métodos que abordamos até o momento. Felizmente, conseguimos obter nossa grandeza de interesse — \\(V_{C}(t)\\) — à partir do princípio da sobreposição linear.
+
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-degrau.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33">
+
+<div class="grid-element regular">
+
+A tensão \\(V_{C}(t)\\) do capacitor em resposta ao degrau pode ser obtida sobrepondo-se a resposta forçada \\(V_{F}(t)\\) do capacitor com sua resposta ao estímulo natural \\(V_{N}(t)\\).
+
+\\[
+V_{C}(t) = V_{F}(t) + V_{N}(t)
+\\]
+
+- \\(V_{F}(t)\\) é a resposta forçada que ignora o armazenamento de energia do capacitor — desconsiderando o estado transitório — tendo em vista somente os estados permanentes do componente: **inicial (descarregado na resposta ao degrau) e em estabilidade (carregado na resposta ao degrau)**
+- \\(V_{N}(t)\\) é a resposta natural do capacitor — durante o estado transitório num instante de tempo inicial \\(k\\) qualquer — que considera suas características de armazenamento (fornecimento) de energia.
+
+Reiterando, em termos simples, a sobreposição garante que a tensão \\(V_{C}(t)\\) do capacitor pode ser calculada pela soma do seus comportamentos \\(V_{F}(t)\\) — no estado permanente — e \\(V_{N}(t)\\) — no estado transitório.
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-degrau.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33 regular">
+
+<div class="grid-element">
+
+### Cálculo da Resposta Forçada \\(V_{F}(t)\\)
+
+A resposta forçada \\(V_{F}\\) desconsidera o estado transitório do sistema. Na resposta ao degrau, que como vimos, modela o comportamento de carga do capacitor, o capacitor no seu estado permanente — após a carga — apresenta a mesma tensão do equivalente de norton do circuito, ou seja:
+
+\\[
+V_{F}(t) = R \cdot I_{S}
+\\]
+
+### Cálculo da Resposta Natural \\(V_{N}(t)\\)
+
+A resposta natural \\(V_{N}(t)\\) considera as características de armazenamento de energia do capacitor, portanto, como ele se comporta no estado transitório sob influência nula da fonte (tensão ou corrente) do sistema. Sabemos (como estudamos na resposta natural) que o circuito \\(RC\\) equivalente à resposta ao estímulo natural é como o mostrado pela segunda imagem à direita.
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-degrau-circuito-equivalente.png)
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+<div class="grid-66-33 regular">
+
+<div class="grid-element">
+
+### Cálculo da Resposta Natural \\(V_{N}(t)\\)
+
+Neste circuito, pela LKC no nó A, temos que \\(I_{C} + I_{R} = 0\\). Podemos escrever \\(I_{C} \text{ e } I_{R}\\) em função da tensão de resposta natural \\(V_{N}(t)\\) num instante de tempo inicial \\(k\\) qualquer.
+
+- \\(I_{C}\\), a corrente de deslocamento do capacitor, é \\( C {{dV_{N}} \over {dt}}\\);
+- \\(I_{R}\\), a corrente do resistor, é \\({{V_{N}} \over R}\\).
+
+Logo:
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](./img/rc-resposta-natural-circuito-equivalente.svg)
+
+</div>
+
+</div>
+
+<div class="grid-33-33-33 small">
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+    &{C {{dV_{N}} \over {dt}}} + {{V_{N}} \over R} = 0 \therefore \\\\
+    &{{dV_{N}} \over {V_{N}}} = -{{dt} \over {RC}} \therefore \\\\
+    &\int_{k}^{t}{{{dV_{N}} \over {V_{N}}}} = - \int_{k}^{t}{{{dt} \over {RC}}} \therefore
+\end{align}
+\\]
+
+</div>
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+    &ln(V_{N}(t)) - ln(V_{N}(k)) = {{-t} \over {RC}} + {{k} \over {RC}} \therefore \\\\
+    &ln({{V_{N}(t)} \over {V_{N}(k)}}) = {{-t} \over {RC}} + {{k} \over {RC}} \therefore \\\\
+    &{{V_{N}(t)} \over {V_{N}(k)}} = e^{{{-t} \over {RC}} + {{k} \over {RC}}} \therefore \\\\
+\end{align}
+\\]
+
+</div>
+
+<div class="grid-element small">
+
+\\[
+\begin{align}
+    & V_{N}(t) = V_{N}(k) \cdot e^{{{k} \over {RC}}} \cdot e^{{{-t} \over {RC}}} \\\\
+    & \text{Considerando } V_{N}(k) \cdot e^{{{k} \over {RC}}} \text{ como } K_{N} \text{ temos que: } \\\\
+\end{align}
+\\]
+
+<div class="normal" style="border-style: solid;">
+
+\\[
+\begin{align}
+    & V_{N}(t) = K_{N} \cdot e^{{{-t} \over {RC}}} 
+\end{align}
+\\]
+
+</div>
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RC
+
+### Cálculo da Resposta ao degrau \\((V_{C}(t))\\) pela sobreposição.
+
+<div class="regular">
+
+Como já encontramos \\(V_{F}(t)\\) e \\(V_{N}(t)\\), logo, conseguimos calcular \\(V_{C}(t)\\) pelo princípio da sobreposição. Assim:
+
+\\[
+\begin{align}
+    V_{C}(t) &= V_{F}(t) + V_{N}(t) \therefore \\\\
+    V_{C}(t) &= RI_{S} + K_{N}e^{{{-t} \over {RC}}}
+\end{align}
+\\]
+
+</div>
+
