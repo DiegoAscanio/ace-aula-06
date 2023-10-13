@@ -1215,3 +1215,158 @@ Tendo achado a grandeza de interesse \\(i(t)\\) que representa a corrente do ind
 ### Exemplo 7.5 Livro Nilsson e Riedel 10ª Edição
 
 <iframe src="https://diegoascanio.github.io/jupyterlite/lab?path=exemplo-7.5.ipynb" width=100% height=100%></iframe> 
+
+
+---
+
+## Forma Geral Para Cálculo da Resposta Natural e Ao Degrau dos Circuitos RC e RL
+
+<div class="small">
+
+- O método geral para identificar as respostas natural ou a um degrau dos circuitos RL e RC de primeira ordem se fundamenta na semelhança de suas equações diferenciais. 
+
+- Queremos identificar uma grandeza genérica de interesse \\(x(t)\\) que pode representar:
+
+<div class="grid-50-50">
+
+<div class="grid-element">
+
+1. A tensão nos terminais de um capacitor;
+2. A corrente nos terminais de um capacitor;
+
+</div>
+
+<div class="grid-element">
+
+3. A tensão nos terminais de um indutor;
+4. A corrente nos terminais de um indutor;
+
+</div>
+</div>
+
+- Apenas uma EDO é suficiente para obter qualquer uma das quatro grandezas genéricas \\(x(t)\\):
+
+\\[
+\begin{align}
+{{dx} \over {dt}} + {x \over \tau} = K \tag{1}
+\end{align}
+\\]
+
+Onde \\(K\\) é uma constante, que pode ser igual a zero.
+
+Como as tensões (correntes) — às quais os circuitos RL e RC são submetidas — são constantes, logo o valor final da grandeza \\(x\\), qualquer que seja esta grandeza, será constante. No valor final \\(x_{f}\\) – pelo fato deste valor ser constante – a derivada \\({dx} \over {dt}\\) é nula. Substituindo ao avaliar \\(x = x_{f}\\) na equação \\((1)\\), temos:
+
+<div class="grid-50-50">
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+{{dx} \over {dt}} + {x_{f} \over \tau} &= K \therefore \\\\
+0 + {x_{f} \over \tau} &= K \therefore 
+\end{align}
+\\]
+
+</div>
+<div class="grid-element normal solidmargin">
+
+\\[
+\begin{align}
+x_{f} &= K \tau \tag{2}
+\end{align}
+\\]
+
+</div>
+
+</div>
+
+</div>
+
+
+---
+
+## Forma Geral Para Cálculo da Resposta Natural e Ao Degrau dos Circuitos RC e RL
+
+<div class="grid-50-50 small">
+
+<div class="grid-element">
+
+Resolvendo a equação \\((1)\\) por separação de variáveis e substuindo \\(K\tau\\) por \\(x_{f}\\) obtemos:
+
+\\[
+\frac{dx}{dt} = \frac{x}{\tau} + K = \frac{-(x - K\tau)}{\tau} = \frac{-(x - x_{f})}{\tau}
+\\]
+
+Multiplicando ambos os lados da equação por \\(\frac{dt}{x - x_{f}}\\) temos a EDO Homogênea e Separável:
+
+\\[
+\frac{dx}{x - x_{f}} = \frac{-1}{\tau} dt
+\\]
+
+</div>
+<div class="grid-element">
+
+Agora, devemos integrar os dois lados da equação e para obter a forma mais geral possível, usamos \\(t_{0}\\) como limite inferior de integração, \\(t\\) como limite superior, \\(u\\) como variável de integração relativa à grandeza de interesse \\(x\\) e \\(v\\) relativa ao tempo:
+
+\\[
+\int_{x(t_{0})}^{x(t)} {\frac{du}{u - x_{f}}} = - \frac{1}{\tau} \int_{t_{0}}^{t}{dv} \therefore \\\\
+x(t) = x_{f}  + \left[ x(t_{0}) - x_{f} \right]e^{\frac{-(t - t_{0})}{\tau}}
+\\]
+
+Essa equação é muito importante porque representa:
+
+\\[
+\begin{align}
+    &\left. \text{Grandeza} \\\\ \text{de Interesse} \right. &= &\left. {\text{Valor} \\\\ \text{Final}} \right. &+ &\left[ {{\left. \text{Valor} \\\\ \text{Inicial} \right.} - {\left. \text{Valor} \\\\ \text{Final} \right.}} \right] &\times e^{-\frac{t - t_{0}}{\tau}}
+\end{align}
+\\]
+
+Onde \\(t_{0}\\) é o tempo onde é introduzida a perturbação que leva o circuito ao estado transitório (carga ou descarga) e \\(\tau\\) é a constante de tempo do circuito tal que \\(\tau = RC\\) quando o circuito for \\(RC\\) ou \\(\tau = \frac{L}{R}\\) quando o circuito for \\(RL\\).
+
+</div>
+
+</div>
+
+
+---
+
+## Forma Geral Para Cálculo da Resposta Natural e Ao Degrau dos Circuitos RC e RL
+
+<div class="regular">
+
+Por fim, o livro de NILSSON, RIEDEL 10ª Ed. recomenda o seguinte algoritmo para calcular as respostas a quaisquer estímulos de circuitos de primeira ordem pela forma geral:
+
+<img src="https://i.imgur.com/Pb4huZp.png" style="display: block; margin: auto;">
+
+</div>
+
+
+---
+
+<!-- _class: lead -->
+# Passo Autônomo de Aprendizado
+
+<!-- _class: lead -->
+## Exemplos \\(7.7, 7.8 \text{ e } 7.9\\) — págs. 174, 175 e 176 8ª ed. Circuitos Elétricos Nilsson Riedel — Método geral para resposta ao degrau no Circuito RC; Método Geral para condições nulas; Método geral para resposta ao degrau no Circuito RL.
+
+
+---
+
+## Lista de Exercícios 6
+
+Problemas Cujos Dígitos Sejam Divisíveis por Quatro das Seções 7.1, 7.2, 7.3 e 7.4 do livro Circuitos Elétricos 8ª Edição NILSSON; RIEDEL:
+
+7.4, 7.8, 7.12, \\(\cdots\\), 7.68
+
+
+---
+
+<div class="cabecalho large">
+Referências Bibliográficas
+</div>
+<div class="conteudo normal">
+
+- RIEDEL, SUSAN A.; NILSSON, James W. — Circuitos Elétricos 8ª ed. 2009.
+- DE MELO, E. G. — Curso: LOM3202 - Circuitos Elétricos (2020). Accessed August 6, 2023. https://edisciplinas.usp.br/course/view.php?id=82680.
+
+</div>
