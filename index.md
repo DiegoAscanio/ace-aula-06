@@ -121,15 +121,25 @@
     margin-left: 5%;
     margin-right: 5%;
   }
+
   img[alt=grid-img] {
     display: block;
     width: 100%;
+  }
+
+  .dashedmargin {
+    border-style: dashed;
+  }
+
+  .solidmargin {
+    border-style: solid;
   }
 
 </style>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 
 
 # Análise de Circuitos Elétricos
@@ -1009,3 +1019,191 @@ V_{C}(t) = RI_{S} + (V_{C}(0) - RI_{S}) \cdot e^{{-t} \over {RC}}
 ### Exemplo 7.6 Livro Nilsson e Riedel 10ª Edição
 
 <iframe src="https://diegoascanio.github.io/jupyterlite/lab?path=exemplo-7.6.ipynb" width=100% height=100%></iframe> 
+
+
+---
+
+## Resposta ao Degrau do Circuito RL
+
+<div class="grid-66-33">
+
+<div class="grid-element normal">
+
+- **REITERANDO:** a resposta ao estímulo degrau (aplicação repentina de uma fonte de tensão / corrente) aos terminais de um passivo de armazenamento de energia representa a carga deste passivo.
+- Uma vez que em \\(t = 0\\) a chave é ligada, logo, o indutor \\(L\\) é conectado em série em série à fonte de tensão \\(V_{S}\\) e ao resistor \\(R\\) retratados, como visto na segunda imagem à direita.
+- Estamos interessados em aprender como o indutor se comporta em resposta ao estímulo degrau, ou seja, queremos saber como o indutor carrega.
+- Qual modelo matemático descreve este comportamento?
+    - Será estudado agora!
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](https://i.imgur.com/Scu5Xlo.png)
+
+<!-- _class: transparent -->
+![grid-img](https://i.imgur.com/0vvo3J1.png)
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RL
+
+<div class="grid-66-33">
+
+<div class="grid-element regular">
+
+- Como sabemos, o indutor se opõe à variação da corrente. Logo, \\(i(t)\\) é nossa grandeza de interesse.
+- No instante de tempo \\(t = 0\\), a chave é fechada e o circuito torna-se como o mostrado na imagem a direita.
+- Pela LKT nas malhas, sabemos que \\(V_{S} - V_{R} - V_{L} = 0\\)
+
+</div>
+
+<div class="grid-element">
+
+<!-- _class: transparent -->
+![grid-img](https://i.imgur.com/0vvo3J1.png)
+
+</div>
+
+</div>
+
+<div class="grid-33-33-33 footnotesize solidmargin" >
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+    V_{R} + V_{L} &= V_{S} \tag{1} \\\\
+    V_{R} &= Ri \tag{2} \\\\
+    V_{L} &= L {{di} \over {dt}} \tag{3} \\\\
+    V_{S} &= Ri + L {{di} \over {dt}}
+\end{align}
+\\]
+
+Portanto, encontramos a EDO que modela o sistema para buscarmos nossa grandeza de interesse do indutor \\(i(t)\\).
+
+
+</div>
+
+<div class="grid-element">
+
+Aplicando manipulações algébricas na EDO para resolvê-la:
+
+\\[
+\begin{align}
+    V_{S} - Ri &= L {{di} \over {dt}} \therefore \\\\
+    {{V_{S} - Ri} \over {L}} &= {{di} \over {dt}} \therefore \\\\
+    {-{R \over L}} \cdot (i(t) - {{V_{S}} \over {R}}) &= {{di} \over {dt}} \therefore \\\\
+    {-{R \over L} dt} = {{di} \over {(i(t) - {{V_{S}} \over {R}})}} & \tag{4}
+\end{align}
+\\]
+
+</div>
+
+<div class="grid-element">
+
+Integrando ambos os lados na eq. \\((4)\\) de \\(0\\) à \\(t\\) obtemos:
+
+\\[
+\begin{align}
+    \int_{0}^{t}{-{R \over L} dt} &= \int_{i(0)}^{i(t)}{{di} \over {(i(t) - {{V_{S}} \over {R}})}} \\\\
+    \left[ - {R \over L} t - 0\right] = & \left[ ln ({i(t)} - {{{V_{S}} \over R}}) \right. - \\\\ &\left. ln ({i(0) - {{V_{S}} \over R}}) \right]
+\end{align}
+\\]
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RL
+
+<div class="grid-50-50 regular">
+
+<div class="grid-element">
+
+Continuando à partir da última equação:
+
+\\[
+\begin{align}
+    \left[ - {R \over L} t - 0\right] &= \left[ ln ({i(t)} - {{{V_{S}} \over R}}) - ln ({i(0) - {{V_{S}} \over R}}) \right] \therefore \\\\
+    - {R \over L} t &= ln ({{i(t) - {V_{S} \over R}} \over {i(0) - {V_{S} \over R}}}) \therefore \\\\
+    e^{- {R \over L} t} &= {{i(t) - {V_{S} \over R}} \over {i(0) - {V_{S} \over R}}} \therefore
+\end{align}
+\\]
+
+</div>
+
+<div class="grid-element">
+
+\\[
+\begin{align}
+    {i(t) - {V_{S} \over R}} &= ({i(0) - {V_{S} \over R}}) \cdot e^{- {R \over L} t} \therefore \\\\
+\end{align}
+\\]
+
+
+<div style="font-size: 32px;">
+
+\\[
+\begin{align}
+    i(t) &= ({i(0) - {V_{S} \over R}}) \cdot e^{- {R \over L} t} + {V_{S} \over R}
+\end{align}
+\\]
+
+</div>
+
+- Consideramos o coeficiente \\({R \over L}\\) da variável \\(t\\) da exponencial como \\(\tau\\), a constante de tempo do circuito \\(RL\\).
+- Quando \\(i(0) = 0A\\), logo:
+
+\\[
+i(t) = {V_{S} \over R} \cdot (1 - e^{-{R \over L}t})
+\\]
+
+</div>
+
+</div>
+
+
+---
+
+## Resposta ao Degrau do Circuito RL
+
+<div class="regular">
+
+Tendo achado a grandeza de interesse \\(i(t)\\) que representa a corrente do indutor, devemos encontrar também a tensão do indutor.
+
+- Da aula 5, sabemos que a tensão \\(V_{L}\\) do indutor é dada por:
+\\[
+    V_{L}(t) = L {{di} \over {dt}}
+\\]
+
+- A corrente do indutor submetida ao degrau é \\(i(t) = ({i(0) - {V_{S} \over R}}) \cdot e^{- {R \over L} t} + {V_{S} \over R}\\). Logo:
+
+\\[
+\require{cancel}
+\begin{align}
+    {{di} \over {dt}} &= - {R \over L} \left[ i(0) - {V_{S} \over R}\right] e^{-{R \over L}t} \tag{1} \\\\
+    V_{L}(t) &= \cancel{L} \cdot {- {\cancel{R} \over \cancel{L}}} \cdot \left[ {i(0) - {V_{S} \over \cancel{R}}} \right] \cdot e^{-{R \over L}t} \therefore
+\end{align}
+\\]
+
+<div class="large solidmargin">
+
+\\[
+\begin{align}
+    V_{L}(t) &= (V_{S} - Ri(0)) \cdot e^{-{R \over L}t}
+\end{align}
+\\]
+
+</div>
+
+</div>
