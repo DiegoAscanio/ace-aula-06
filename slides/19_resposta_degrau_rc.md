@@ -16,7 +16,7 @@
 
 **Queremos encontrar uma equação que nos permita calcular a tensão armazenada pelo capacitor ao longo do tempo — \\(V_{C}(t)\\) — em função da corrente \\(I_{S}\\) fornecida pela fonte de corrente.**
 
-Porquê? Porquê a tensão é a grandeza de interesse do capacitor, é aquela a qual este elemento apresenta oposição à sua variação.
+Por quê? Porque a tensão é a grandeza de interesse do capacitor, é aquela a qual este elemento apresenta oposição à sua variação.
 
 </div>
 
